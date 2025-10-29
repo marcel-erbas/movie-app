@@ -3,9 +3,10 @@ import sys
 import random
 import matplotlib.pyplot as plt
 from thefuzz import fuzz
-import movie_storage_sql as storage
-import omdb_api
-import generate_website
+from pathlib import Path
+from movie_storage import movie_storage_sql as storage
+from api import omdb_api
+from ui import generate_website
 
 
 def print_menu():
@@ -166,7 +167,10 @@ def list_movies_sorted_by_rating():
 
 def create_website():
     if generate_website.build_website():
-        print("Website was generated successfully.")
+        output_path = "./templates/index.html"
+        abs_path = Path(output_path).resolve()
+        print(f"Website was generated successfully.")
+        print(f"{abs_path.as_uri()}\n")
 
 
 def create_rating_histogram():

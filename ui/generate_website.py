@@ -1,4 +1,4 @@
-import movie_storage_sql as storage
+from movie_storage import movie_storage_sql as storage
 
 
 def serialize_movies():
@@ -22,14 +22,14 @@ def serialize_movies():
 
 
 def build_website():
-    """Build the main index.html page by replacing template placeholders with dynamic movie content from the database."""
-    with open('index_template.html', 'r', encoding='utf-8') as f:
+    """Build the main index.templates page by replacing template placeholders with dynamic movie content from the database."""
+    with open('./templates/index_template.html', 'r', encoding='utf-8') as f:
         template = f.read()
 
     updated_html = template.replace('__TEMPLATE_TITLE__', 'Movie App')
     updated_html = updated_html.replace('__TEMPLATE_MOVIE_GRID__', serialize_movies())
 
-    with open('index.html', 'w', encoding='utf-8') as f:
+    with open('./templates/index.html', 'w', encoding='utf-8') as f:
         f.write(updated_html)
 
     return True

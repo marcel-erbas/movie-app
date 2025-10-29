@@ -1,6 +1,6 @@
 import json
 
-JSON_FILE = "data.json"
+JSON_FILE = "../data/data.json"
 
 def get_movies():
     """
